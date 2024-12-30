@@ -2,24 +2,24 @@ import random
 import time
 
 # Lista com 10 mil elementos
-minhaLista10k = [random.randint(1,10000) for _ in range(10000)]
+minhaLista10k = random.sample(range(1, 10001), 10000)
 minhaLista10k.sort()
 
 # Lista com 100 mil elementos
-minhaLista100k = [random.randint(1,100000) for _ in range(100000)]
+minhaLista100k = random.sample(range(1, 100001), 100000)
 minhaLista100k.sort()
 
 # Lista com 1 milhão de elementos
-minhaLista1M = [random.randint(1,1000000) for _ in range(1000000)]
+minhaLista1M = random.sample(range(1, 1000001), 1000000)
 minhaLista1M.sort()
 
 def pesquisa_binaria(lista, item):
-    baixo = 0
-    alto = len(lista) - 1
+    inicio = 0
+    fim = len(lista) - 1
     etapas = 0
 
-    while baixo <= alto:
-        meio = (baixo + alto) // 2
+    while inicio <= fim:
+        meio = (inicio + fim) // 2
         chute = lista[meio]
         etapas += 1
 
@@ -27,10 +27,10 @@ def pesquisa_binaria(lista, item):
             return meio, etapas
         
         if chute > item:
-            alto = meio - 1
+            fim = meio - 1
 
         else:
-            baixo = meio + 1
+            inicio = meio + 1
 
     return None, etapas
 
@@ -46,7 +46,7 @@ print("Lista com 10 mil elementos:")
 print(f"Elemento buscado: {item_10k}")
 print(f"Resultado da busca: {resultado_10k}")
 print(f"Número de etapas: {etapas_10k}")
-print(f"Tempo de execução: {tempo10k:.6f} segundos")
+print(f"Tempo de execução: {tempo10k:.7f} segundos")
 print("\n")
 
 # Medindo o tempo de execução para a lista de 100 mil elementos
@@ -61,7 +61,7 @@ print("Lista com 100 mil elementos:")
 print(f"Elemento buscado: {item_100k}")
 print(f"Resultado da busca: {resultado_100k}")
 print(f"Número de etapas: {etapas_100k}")
-print(f"Tempo de execução: {tempo100k:.6f} segundos")
+print(f"Tempo de execução: {tempo100k:.7f} segundos")
 print("\n")
 
 # Medindo o tempo de execução para a lista de 1 milhão de elementos
@@ -76,5 +76,5 @@ print("Lista com 1 milhão de elementos:")
 print(f"Elemento buscado: {item_1M}")
 print(f"Resultado da busca: {resultado_1M}")
 print(f"Número de etapas: {etapas_1M}")
-print(f"Tempo de execução: {tempo1M:.6f} segundos")
+print(f"Tempo de execução: {tempo1M:.7f} segundos")
 print("\n")
