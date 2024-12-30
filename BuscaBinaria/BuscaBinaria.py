@@ -24,7 +24,7 @@ def pesquisa_binaria(lista, item):
         etapas += 1
 
         if chute == item:
-            return meio, etapas
+            return chute, etapas
         
         if chute > item:
             fim = meio - 1
